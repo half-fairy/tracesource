@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"  xmlns:shiro="http://www.thymeleaf.org/thymeleaf-extras-shiro">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="">
+  <meta name="author" content="Dashboard">
+  <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+  <title>Dashio - Bootstrap Admin Template</title>
+
+  <!-- Favicons -->
+  <link th:href="@{/images/quotient/favicon.png}" rel="icon">
+  <link th:href="@{/images/quotient/apple-touch-icon.png}" rel="apple-touch-icon">
+
+  <!-- Bootstrap core CSS -->
+  <link th:href="@{/css/quotient/bootstrap.min.css}" rel="stylesheet">
+  <link th:href="@{/css/quotient/font-awesome.css}" rel="stylesheet" />
+  <link th:href="@{/css/quotient/style.css}" rel="stylesheet">
+  <link th:href="@{/css/quotient/style-responsive.css}" rel="stylesheet">
+
+  
+</head>
+
+<body>
+  <section id="container">
+      <!--顶部导航栏-->
+      <div th:replace="~{commons/quotientCommon::topbar}"></div>
+        <!--侧边栏-->
+      <div th:replace="~{commons/quotientCommon::sidebar}"></div>
+
+
+
+ <!--主体部分-->
+    <section id="main-content">
+      <section class="wrapper">
+        <h3><i class="fa fa-angle-right"></i> Basic Table Examples</h3>
+        <div class="row">
+          <div class="col-md-12">
+            <div class="content-panel">
+              <h4><i class="fa fa-angle-right"></i> Basic Table</h4>
+              <hr>
+              <table class="table">
+                <thead>
+                  <tr>
+                    <th>#</th>
+                    <th>员工编号</th>
+                    <th>员工所在工厂编号</th>
+                    <th>员工姓名</th>
+                    <th>职位</th>
+                    <th>健康状况</th>
+                    <th>操作</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr th:each="farmstaff,num:${farmstaffs}">
+                    <td  th:text="${num.index}"></td>
+                    <td th:text="${farmstaff.getWorkerId()}"></td>
+                    <td th:text="${farmstaff.getWorkerPlantId()}"></td>
+                    <td th:text="${farmstaff.getWorkerName()}"></td>
+                    <td th:text="${farmstaff.getWorkerPosition()}"></td>
+                    <td th:text="${farmstaff.getWorkerHealth()}"></td>
+                    <td>
+                      <!--btn-sm:小标签,btn-primary:主样式-->
+                      <a class="btn btn-sm btn-primary" th:href="@{/farmstaff/}+${farmstaff.workerId}">编辑</a>
+                      <a class="btn btn-sm btn-danger" th:href="@{/delfarmstaff/}+${farmstaff.workerId}">删除</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <!-- /col-md-12 -->
+          <!-- /col-md-12 -->
+        </div>
+
+      </section>
+    </section>
+    <!-- /MAIN CONTENT -->
+    <!--main content end-->
+
+  </section>
+  <!-- js placed at the end of the document so the pages load faster -->
+  <script th:src="@{/js/quotient/jquery.min.js}"></script>
+  <script th:src="@{/js/quotient/bootstrap.min.js}"></script>
+  <script class="include" type="text/javascript" th:src="@{/js/quotient/jquery.dcjqaccordion.2.7.js}"></script>
+  <script th:src="@{/js/quotient/jquery.scrollTo.min.js}"></script>
+  <script th:src="@{/js/quotient/jquery.nicescroll.js}" type="text/javascript"></script>
+  <!--common script for all pages-->
+  <script th:src="@{/js/quotient/common-scripts.js}"></script>
+  <!--script for this page-->
+  
+</body>
+
+</html>

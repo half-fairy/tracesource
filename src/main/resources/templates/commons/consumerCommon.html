@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<!--顶部导航栏 #4fd98b  lightblue-->
+<!-- Header mediumspringgreen-->
+<style>
+
+</style>
+<header th:fragment="topbar" id="header" class="header">
+    <div class="top-left">
+        <div class="navbar-header">
+            <a class="navbar-brand main-btn btn-two threed" style="color:mediumspringgreen">基于区块链牲畜养殖追溯系统 </a>
+            <a class="navbar-brand hidden" href="./"><img th:src="@{/images/consumer/logo2.png}" alt="Logo"></a>
+            <a id="menuToggle" class="menutoggle"><i class="fa fa-bars"></i></a>
+        </div>
+    </div>
+    <div class="top-right">
+        <div class="header-menu">
+            <div class="header-left">
+                <button class="search-trigger"><i class="fa fa-search"></i></button>
+                <div class="form-inline">
+                    <form class="search-form">
+                        <input class="form-control mr-sm-2" type="text" placeholder="Search ..." aria-label="Search">
+                        <button class="search-close" type="submit"><i class="fa fa-close"></i></button>
+                    </form>
+                </div>
+
+                <div class="dropdown for-notification">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="notification" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-bell"></i>
+                        <span class="count bg-danger">3</span>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="notification">
+                        <p class="red">You have 3 Notification</p>
+                        <a class="dropdown-item media" href="#">
+                            <i class="fa fa-check"></i>
+                            <p>Server #1 overloaded.</p>
+                        </a>
+                        <a class="dropdown-item media" href="#">
+                            <i class="fa fa-info"></i>
+                            <p>Server #2 overloaded.</p>
+                        </a>
+                        <a class="dropdown-item media" href="#">
+                            <i class="fa fa-warning"></i>
+                            <p>Server #3 overloaded.</p>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="dropdown for-message">
+                    <button class="btn btn-secondary dropdown-toggle" type="button" id="message" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="fa fa-envelope"></i>
+                        <span class="count bg-primary">4</span>
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="message">
+                        <p class="red">You have 4 Mails</p>
+                        <a class="dropdown-item media" href="#">
+                            <span class="photo media-left"><img alt="avatar" th:src="@{/images/consumer/avatar/1.jpg}"></span>
+                            <div class="message media-body">
+                                <span class="name float-left">Jonathan Smith</span>
+                                <span class="time float-right">Just now</span>
+                                <p>Hello, this is an example msg</p>
+                            </div>
+                        </a>
+                        <a class="dropdown-item media" href="#">
+                            <span class="photo media-left"><img alt="avatar" th:src="@{/images/consumer/avatar/2.jpg}"></span>
+                            <div class="message media-body">
+                                <span class="name float-left">Jack Sanders</span>
+                                <span class="time float-right">5 minutes ago</span>
+                                <p>Lorem ipsum dolor sit amet, consectetur</p>
+                            </div>
+                        </a>
+                        <a class="dropdown-item media" href="#">
+                            <span class="photo media-left"><img alt="avatar" th:src="@{/images/consumer/avatar/3.jpg}"></span>
+                            <div class="message media-body">
+                                <span class="name float-left">Cheryl Wheeler</span>
+                                <span class="time float-right">10 minutes ago</span>
+                                <p>Hello, this is an example msg</p>
+                            </div>
+                        </a>
+                        <a class="dropdown-item media" href="#">
+                            <span class="photo media-left"><img alt="avatar" th:src="@{/images/consumer/avatar/4.jpg}"></span>
+                            <div class="message media-body">
+                                <span class="name float-left">Rachel Santos</span>
+                                <span class="time float-right">15 minutes ago</span>
+                                <p>Lorem ipsum dolor sit amet, consectetur</p>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="user-area dropdown float-right">
+                <a href="#" class="dropdown-toggle active" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <img class="user-avatar rounded-circle" th:src="@{/images/consumer/admin.jpg}" alt="User Avatar">
+                </a>
+
+                <div class="user-menu dropdown-menu">
+                    <a class="nav-link" href="#"><i class="fa fa- user"></i>My Profile</a>
+
+                    <a class="nav-link" href="#"><i class="fa fa- user"></i>Notifications <span class="count">13</span></a>
+
+                    <a class="nav-link" href="#"><i class="fa fa -cog"></i>Settings</a>
+
+                    <a class="nav-link" href="#"><i class="fa fa-power -off"></i>Logout</a>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</header>
+
+<!--侧边栏？-->
+<!--th:fragment="sidebar"将侧边栏抽取出来，抽出来就相当于变成一个组件-->
+<!--左边栏-->
+<aside th:fragment="sidebar" id="left-panel" class="left-panel">
+    <nav class="navbar navbar-expand-sm navbar-default">
+        <div id="main-menu" class="main-menu collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+                <li class="active">
+                    <a th:href="@{/consumer/logout}"><i class="menu-icon fa fa-laptop"></i>首页 </a>
+                </li>
+                <li class="menu-title">选择部门</li><!-- /.menu-title -->
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-cogs"></i>养殖场</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="fa fa-puzzle-piece"></i>
+                            <a  th:href="@{/find1}" th:class="${active=='search1.html'?'nav-link active':'nav-link'}">
+                                查询信息
+                            </a>
+                        </li>
+                        <li><i class="fa fa-id-badge"></i><a th:href="@{/find2}">牛只信息验证</a></li>
+                        <li><i class="fa fa-id-badge"></i><a th:href="@{/find2-1}">养殖记录验证</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="menu-icon fa fa-table"></i>屠宰场</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="fa fa-puzzle-piece"></i><a th:href="@{/find3}">查询信息</a></li>
+                        <li><i class="fa fa-id-badge"></i><a th:href="@{/find4}">屠宰记录验证</a></li>
+                    </ul>
+                </li>
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        <i class="menu-icon fa fa-th"></i>物流部门</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="menu-icon fa fa-puzzle-piece"></i><a th:href="@{/find5}">查询信息</a></li>
+                        <li><i class="menu-icon fa fa-id-badge"></i><a th:href="@{/find6}">物流记录验证</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-title">Icons</li><!-- /.menu-title -->
+
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-tasks"></i>Icons</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="menu-icon fa fa-fort-awesome"></i><a href="font-fontawesome.html">Font Awesome</a></li>
+                        <li><i class="menu-icon ti-themify-logo"></i><a href="font-themify.html">Themefy Icons</a></li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="widgets.html"> <i class="menu-icon ti-email"></i>Widgets </a>
+                </li>
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-bar-chart"></i>Charts</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="menu-icon fa fa-line-chart"></i><a href="charts-chartjs.html">Chart JS</a></li>
+                        <li><i class="menu-icon fa fa-area-chart"></i><a href="charts-flot.html">Flot Chart</a></li>
+                        <li><i class="menu-icon fa fa-pie-chart"></i><a href="charts-peity.html">Peity Chart</a></li>
+                    </ul>
+                </li>
+
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-area-chart"></i>Maps</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="menu-icon fa fa-map-o"></i><a href="maps-gmap.html">Google Maps</a></li>
+                        <li><i class="menu-icon fa fa-street-view"></i><a href="maps-vector.html">Vector Maps</a></li>
+                    </ul>
+                </li>
+                <li class="menu-title">Extras</li><!-- /.menu-title -->
+                <li class="menu-item-has-children dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> <i class="menu-icon fa fa-glass"></i>Pages</a>
+                    <ul class="sub-menu children dropdown-menu">
+                        <li><i class="menu-icon fa fa-sign-in"></i><a href="page-login.html">Login</a></li>
+                        <li><i class="menu-icon fa fa-sign-in"></i><a href="page-register.html">Register</a></li>
+                        <li><i class="menu-icon fa fa-paper-plane"></i><a href="pages-forget.html">Forget Pass</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div><!-- /.navbar-collapse -->
+    </nav>
+</aside>
+</html>

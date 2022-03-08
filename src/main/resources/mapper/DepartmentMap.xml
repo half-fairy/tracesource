@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--配置使用的mapper接口-->
+<mapper namespace="com.wang.tracesource.mapper.DepartmentMapper">
+
+    <!--此处的user要能被识别，需要设置别名;并且整个文件要能被spring去识别,需要取application.properties去整合spring-->
+    <!--resultType是sql语句查询结果集的封装类型，也就是说把sql查询的结果封装在bean里返回回去，是存数据用的。-->
+    <!--paramType是从传过来的Bean中取数据放进例如insert语句的values中当实参用，是取数据用的。-->
+    <select id="queryDepartmentByName" parameterType="String" resultType="Department">
+        select * from departtable where departPerson =#{name}
+    </select>
+
+    <insert id="insertDepartment" parameterType="Department">
+        insert into departtable (departPerson,departName,departPwd,perms) values (#{departPerson},#{departName},#{departPwd},#{perms})
+    </insert>
+
+
+    <select id="queryDepartmentById" parameterType="int" resultType="Department">
+        select * from gethspringboot.departtable where departId=#{id}
+    </select>
+    
+
+</mapper>

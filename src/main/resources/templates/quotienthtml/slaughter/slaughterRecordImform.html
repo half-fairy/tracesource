@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org"  xmlns:shiro="http://www.thymeleaf.org/thymeleaf-extras-shiro">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Dashboard">
+    <meta name="keyword" content="Dashboard, Bootstrap, Admin, Template, Theme, Responsive, Fluid, Retina">
+    <title>Dashio - Bootstrap Admin Template</title>
+
+    <!-- Favicons -->
+    <link th:href="@{/images/quotient/favicon.png}" rel="icon">
+    <link th:href="@{/images/quotient/apple-touch-icon.png}" rel="apple-touch-icon">
+
+    <!-- Bootstrap core CSS -->
+    <link th:href="@{/css/quotient/bootstrap.min.css}" rel="stylesheet">
+    <link th:href="@{/css/quotient/font-awesome.css}" rel="stylesheet" />
+    <link th:href="@{/css/quotient/style.css}" rel="stylesheet">
+    <link th:href="@{/css/quotient/style-responsive.css}" rel="stylesheet">
+
+
+</head>
+
+<body>
+<section id="container">
+    <!--顶部导航栏-->
+    <div th:replace="~{commons/quotientCommon::topbar}"></div>
+    <!--侧边栏-->
+    <div th:replace="~{commons/quotientCommon::sidebar}"></div>
+
+
+
+    <!--主体部分-->
+    <section shiro:hasPermission="login:slaughter1" id="main-content">
+        <section class="wrapper">
+        <div class="col-lg-12">
+            <h4><i class="fa fa-angle-right"></i>Please Input Cattle Imformation</h4>
+            <div class="form-panel">
+                <div class="form">
+                    <form method="post" th:action="@{/login/slaughterEnroll/addSlaughterRecord}" class="cmxform form-horizontal style-form" id="signupForm" >
+                        <div style="margin-bottom: 0px" class="form-group ">
+                            <label for="recordId" class="control-label col-lg-2">记录单编号</label>
+                            <span th:text="${msges4}" style="color: red" class="col-lg-2"> </span>
+                            <div class="col-lg-10">
+                                <input class=" form-control" id="recordId" name="recordId" type="text" />
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 0px" class="form-group ">
+                            <label for="cattleId" class="control-label col-lg-2">牛只编号</label>
+                            <span th:text="${msges1}" style="color: red" class="col-lg-2"> </span>
+                            <div class="col-lg-10">
+                                <input class=" form-control" id="cattleId" name="cattleId" type="text" />
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 0px" class="form-group ">
+                            <label for="cattleHealth" class="control-label col-lg-2">牛只健康状况</label>
+                            <span th:text="${msges3}" style="color: red" class="col-lg-2"> </span>
+                            <div class="col-lg-10">
+                                <input class=" form-control" id="cattleHealth" name="cattleHealth" type="text" />
+                            </div>
+                        </div>
+                        <!--margin-bottom: -7px;-->
+                        <!--font-size: smaller-->
+
+                        <div style="margin-bottom: 0px"  class="form-group ">
+                            <label for="quarantineDate" class="control-label col-lg-2">检疫员日期</label>
+                            <div class="col-lg-10">
+                                <input class=" form-control" id="quarantineDate" name="quarantineDate" type="text" />
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 0px" class="form-group ">
+                            <label for="quarantinerId" class="control-label col-lg-2">检疫员编号</label>
+                            <span th:text="${msges3}" style="color: red" class="col-lg-2"> </span>
+                            <div class="col-lg-10">
+                                <input class=" form-control" id="quarantinerId" name="quarantinerId" type="text" />
+                            </div>
+                        </div>
+
+                        <div style="margin-bottom: 0px" class="form-group ">
+                            <label for="slaughterDate" class="control-label col-lg-2">屠宰日期</label>
+                            <span th:text="${msges3}" style="color: red" class="col-lg-2"> </span>
+                            <div class="col-lg-10">
+                                <input class=" form-control" id="slaughterDate" name="slaughterDate" type="text" />
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 0px" class="form-group ">
+                            <label for="butcherId" class="control-label col-lg-2">屠宰员编号</label>
+                            <span th:text="${msges3}" style="color: red" class="col-lg-2"> </span>
+                            <div class="col-lg-10">
+                                <input class=" form-control" id="butcherId" name="butcherId" type="text" />
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <div class="col-lg-offset-2 col-lg-10">
+                                <button class="btn btn-theme" type="submit">提交</button>
+                                <a class="btn btn-theme04" th:href="@{/login/slaughterEnroll/cancel}" type="button">取消</a>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <!-- /form-panel -->
+        </div>
+        <!-- /col-lg-12 -->
+    </div>
+        </section>
+        <!-- /wrapper -->
+    </section>
+
+
+</section>
+<!-- js placed at the end of the document so the pages load faster -->
+<script th:src="@{/js/quotient/jquery.min.js}"></script>
+<script th:src="@{/js/quotient/bootstrap.min.js}"></script>
+<script class="include" type="text/javascript" th:src="@{/js/quotient/jquery.dcjqaccordion.2.7.js}"></script>
+<script th:src="@{/js/quotient/jquery.scrollTo.min.js}"></script>
+<script th:src="@{/js/quotient/jquery.nicescroll.js}" type="text/javascript"></script>
+<!--common script for all pages-->
+<script th:src="@{/js/quotient/common-scripts.js}"></script>
+<!--script for this page-->
+
+</body>
+
+</html>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--配置使用的mapper接口-->
+<mapper namespace="com.wang.tracesource.mapper.SlaughterRecordMapper">
+
+    <!--此处的User要能被识别，需要设置别名;并且整个文件要能被spring去识别,需要取application.properties去整合spring-->
+    <!--resultType是sql语句查询结果集的封装类型，也就是说把sql查询的结果封装在bean里返回回去，是存数据用的。-->
+    <!--paramType是从传过来的Bean中取数据放进例如insert语句的values中当实参用，是取数据用的。-->
+
+    <!--添加屠宰记录信息--> <!--parameterType:参数的类型-->
+    <insert id="saveSlaughterRecord" parameterType="SlaughterRecord" >
+        insert into slaughterrecord(recordId,cattleId,cattleHealth,quarantineDate,quarantinerId,butcherId,slaughterDate,shaCode)
+        values (#{recordId},#{cattleId},#{cattleHealth},#{quarantineDate},#{quarantinerId},#{butcherId},#{slaughterDate},#{shaCode})
+    </insert>
+
+
+    <!--通过记录单编号查找屠宰记录-->
+    <select id="findSlaughterRecordById" parameterType="int" resultType="SlaughterRecord">
+        select * from slaughterrecord where recordId =#{id}
+    </select>
+
+    <!--通过牛只编号查找屠宰记录-->
+    <select id="findSlaughterRecordByCattleId" parameterType="int" resultType="SlaughterRecord">
+        select * from slaughterrecord where cattleId =#{id}
+    </select>
+
+    <!--通过记录单编号查找屠宰记录的哈希值-->
+    <select id="findSlaughterRecordShacodeById" parameterType="int" resultType="String">
+        select shaCode from slaughterrecord where recordId =#{id}
+    </select>
+
+    <!--查询所有的养殖场员工-->
+    <select id="findAllSlaughterRecord" resultType="SlaughterRecord">
+        select * from slaughterrecord
+    </select>
+
+</mapper>
