@@ -32,70 +32,80 @@
 
 
     <!--主体部分-->
-    <section shiro:hasPermission="login:slaughter1" id="main-content">
+    <section id="main-content">
         <section class="wrapper">
         <div class="col-lg-12">
             <h4><i class="fa fa-angle-right"></i>Please Input Cattle Imformation</h4>
             <div class="form-panel">
                 <div class="form">
-                    <form method="post" th:action="@{/login/slaughterEnroll/addSlaughterRecord}" class="cmxform form-horizontal style-form" id="signupForm" >
+                    <form method="post" th:action="@{/userUpdate}" class="cmxform form-horizontal style-form" id="signupForm" >
                         <div style="margin-bottom: 0px" class="form-group ">
-                            <label for="recordId" class="control-label col-lg-2">记录单编号</label>
-                            <span th:text="${msges4}" style="color: red" class="col-lg-2"> </span>
-                            <div class="col-lg-10">
-                                <input class=" form-control" id="recordId" name="recordId" type="text" />
-                            </div>
-                        </div>
-                        <div style="margin-bottom: 0px" class="form-group ">
-                            <label for="cattleId" class="control-label col-lg-2">牛只编号</label>
+                            <label for="id" class="control-label col-lg-2">ID</label>
                             <span th:text="${msges1}" style="color: red" class="col-lg-2"> </span>
                             <div class="col-lg-10">
-                                <input class=" form-control" id="cattleId" name="cattleId" type="text" />
+                                <input th:value="${allUser.id}" class=" form-control" id="id" name="id" type="text" />
+                            </div>
+                        </div>
+<!--                        th:value="${allUser!=null}?${allUser.name}}"-->
+                        <div style="margin-bottom: 0px" class="form-group ">
+                            <label for="name" class="control-label col-lg-2">姓名</label>
+                            <div class="col-lg-10">
+                                <input th:value="${allUser.name}" class=" form-control" id="name" name="name" type="text" />
                             </div>
                         </div>
                         <div style="margin-bottom: 0px" class="form-group ">
-                            <label for="cattleHealth" class="control-label col-lg-2">牛只健康状况</label>
+                            <label for="nickname" class="control-label col-lg-2">昵称</label>
                             <span th:text="${msges3}" style="color: red" class="col-lg-2"> </span>
                             <div class="col-lg-10">
-                                <input class=" form-control" id="cattleHealth" name="cattleHealth" type="text" />
+                                <input th:value="${allUser.nickname}" class=" form-control" id="nickname" name="nickname" type="text" />
                             </div>
                         </div>
-                        <!--margin-bottom: -7px;-->
-                        <!--font-size: smaller-->
+                        <div style="margin-bottom: 0px" class="form-group ">
+                            <label class="control-label col-lg-2">性别</label>
+                            <div class="col-lg-10">
+                                <input  class="form-check-input" type="radio" name="sex" value="男"
+                                       th:checked="${allUser.sex!=null}?${allUser.sex=='男'}">
+                                <label class="form-check-label">男</label>
+                                <input   class="form-check-input" type="radio" name="sex" value="女"
+                                       th:checked="${allUser.sex!=null}?${allUser.sex=='女'}">
+                                <label class="form-check-label">女</label>
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 0px" class="form-group ">
+                            <label for="age" class="control-label col-lg-2">年龄</label>
+                            <span th:text="${msges3}" style="color: red" class="col-lg-2"> </span>
+                            <div class="col-lg-10">
+                                <input th:value="${allUser.age}" class=" form-control" id="age" name="age" type="text" />
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 0px" class="form-group ">
+                            <label for="notes" class="control-label col-lg-2">备注</label>
+                            <span th:text="${msges3}" style="color: red" class="col-lg-2"> </span>
+                            <div class="col-lg-10">
+                                <input th:value="${allUser.notes}" class=" form-control" id="notes" name="notes" type="text" />
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 0px" class="form-group ">
+                            <label for="createTime" class="control-label col-lg-2">创建日期</label>
+                            <span th:text="${msges3}" style="color: red" class="col-lg-2"> </span>
+                            <div class="col-lg-10">
+                                <input th:value="${allUser.createTime}" class=" form-control" id="createTime" name="createTime" type="text" />
+                            </div>
+                        </div>
+                        <div style="margin-bottom: 0px" class="form-group ">
+                        <label for="endEditTime" class="control-label col-lg-2">结束日期</label>
+                        <span th:text="${msges3}" style="color: red" class="col-lg-2"> </span>
+                        <div class="col-lg-10">
+                            <input th:value="${allUser.endEditTime}" class=" form-control" id="endEditTime" name="endEditTime" type="text" />
+                        </div>
+                    </div>
 
-                        <div style="margin-bottom: 0px"  class="form-group ">
-                            <label for="quarantineDate" class="control-label col-lg-2">检疫员日期</label>
-                            <div class="col-lg-10">
-                                <input class=" form-control" id="quarantineDate" name="quarantineDate" type="text" />
-                            </div>
-                        </div>
-                        <div style="margin-bottom: 0px" class="form-group ">
-                            <label for="quarantinerId" class="control-label col-lg-2">检疫员编号</label>
-                            <span th:text="${msges3}" style="color: red" class="col-lg-2"> </span>
-                            <div class="col-lg-10">
-                                <input class=" form-control" id="quarantinerId" name="quarantinerId" type="text" />
-                            </div>
-                        </div>
 
-                        <div style="margin-bottom: 0px" class="form-group ">
-                            <label for="slaughterDate" class="control-label col-lg-2">屠宰日期</label>
-                            <span th:text="${msges3}" style="color: red" class="col-lg-2"> </span>
-                            <div class="col-lg-10">
-                                <input class=" form-control" id="slaughterDate" name="slaughterDate" type="text" />
-                            </div>
-                        </div>
-                        <div style="margin-bottom: 0px" class="form-group ">
-                            <label for="butcherId" class="control-label col-lg-2">屠宰员编号</label>
-                            <span th:text="${msges3}" style="color: red" class="col-lg-2"> </span>
-                            <div class="col-lg-10">
-                                <input class=" form-control" id="butcherId" name="butcherId" type="text" />
-                            </div>
-                        </div>
 
                         <div class="form-group">
                             <div class="col-lg-offset-2 col-lg-10">
                                 <button class="btn btn-theme" type="submit">提交</button>
-                                <a class="btn btn-theme04" th:href="@{/login/slaughterEnroll/cancel}" type="button">取消</a>
+<!--                                <a class="btn btn-theme04" th:href="@{/login/farmEnroll/cancel}" type="button">删除</a>-->
                             </div>
                         </div>
                     </form>

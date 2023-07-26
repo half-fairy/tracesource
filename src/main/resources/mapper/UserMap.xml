@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!--配置使用的mapper接口-->
+<mapper namespace="com.wang.tracesource.mapper.UserMapper">
+
+    <!--此处的User要能被识别，需要设置别名;并且整个文件要能被spring去识别,需要取application.properties去整合spring-->
+    <!--resultType是sql语句查询结果集的封装类型，也就是说把sql查询的结果封装在bean里返回回去，是存数据用的。-->
+    <!--paramType是从传过来的Bean中取数据放进例如insert语句的values中当实参用，是取数据用的。-->
+
+    <insert id="addUser" parameterType="User" >
+        insert into user(id,name,nickname,sex,age,notes,create_time,end_edit_time)
+        values (#{id},#{name},#{nickname},#{sex},#{age},#{notes},#{createTime},#{endEditTime})
+    </insert>
+    <delete id="deleteUser" parameterType="int">
+        delete from user where id =#{id}
+    </delete>
+
+    <update id="updateUser"  parameterType="User" >
+        update user set name=#{name},nickname=#{nickname},sex=#{sex},age=#{age},notes=#{notes},
+        create_time=#{createTime},end_edit_time=#{endEditTime} where id =#{id}
+    </update>
+
+    <select id="findUserById" parameterType="int" resultType="id">
+        select * from user where id =#{id}
+    </select>
+
+    <select id="findAllUser" resultType="User">
+        select * from user
+    </select>
+
+</mapper>
